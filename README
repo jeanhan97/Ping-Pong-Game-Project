@@ -1,0 +1,70 @@
+/* Name: Ji Eun Han       
+ * Assignment Number: Project 04
+ * Section: Mon, Wed 12:30 
+ * Lab TA: Jack, Sofia, Xena
+ * I did not collaborate with anyone. 
+ */
+ 
+ <Canvas Class> 
+ 
+ This is a JFrame class has the userGUI menu called "Bouncing Ball Game App" that indicates the instructions
+ of playing the lob pong game and has a slider where the user can choose which level they want to start the game from
+ and when the start game button is pressed, another window pops up with the actual animation of the game. 
+ The user needs to pick a level they want to start at or nothing will pop up when they press the start game button. 
+ 
+ <Bar Class>
+ 
+ This class creates the bar/racket in which the user will control with left and right arrow keys.
+ The starting size is 50 by 5. There's a minimum and maximum value in which the bar can move around. 
+ If the x coordinate reaches the left part of the window, the bar will stop moving. When the x coordinate
+ in addition to the bar size reaches the right part of the window, the bar won't be able to move right further. 
+ This class also includes getters and setters so in the Panel class, I am able to call upon the x,y,width and height 
+ values of the bar/racket. 
+ 
+ <Ball Class>
+ 
+ This class creates the moving ball that bounces around the bar/racket as well as the sides and top part of the window.
+ The initial point of launch of the ball starts up top of the window at a random x value within the canvas width. The 
+ initial velocity for x is 4 and y is 0. This is a set initial velocity that will add on to the x and y coordinate of the ball
+ until altered after bouncing off the walls or the bar/racket. The paint method uses the x and y coordinate of the ball to draw 
+ the moving ball. This also includes getter and setter of x and y as well as the size of the ball to be used in the panel class. 
+  
+ <Panel Class>
+ 
+ When the start game button is pressed, this panel class is called and a window pops up. A timer is started for animation
+ that counts by 20 millisecond and for the count down clock, another Timer is introduced that counts by seconds. This count down
+ timer will decrease the value of delay which is 60 seconds of the time that's given to a player to play each level. So essentially
+ the count down timer is starting from 60 and going down by 1 every second. When the delay variable value reaches 0, so when the time 
+ is up, the count down clock stops and the animation timer stops as well. 
+ 
+ In a updateboth method, bar update method is called where the min and max value of the bar is set. A set of if else statements are set
+ where it changes the x and y velocity according to where the ball bounces off of. And the last if else statement is where I have the condition
+ that when the ball bounces off the bar/racket, the y velocity sign is switched to a positive from a negative and a point is added. This method is 
+ also where I add the velocity to the x and y coordinates and incorporate the gravitational force to the equation of the velocity. I also 
+ have so each time the gamelevel goes up, the width of the bar gets smaller and smaller so it's more difficult for the player to hit the ball. 
+ 
+ In the paintcomponent method, it sets a black background and draws the countdown timer on the top left corner. This timer drawn is updated each 
+ time the countdown timer changes and decreases the delay variable value. I also account for when the ball goes passed the bar. Life count goes down 
+ by 1 and the x and y velocity resets to the initial velocity as well as the ball position to the top of the screen with a random x value. If you still 
+ have ball/lives left, the paint methods for both ball and bar class is called as it's draw on the canvas. I have the score printed on the top right corner
+ as well as how many lives you have left in form of yellow circles as well as the level you're currently on on the top right corner. I also made a case where 
+ you used up all your life count. The countdown timer and animation timer stops and a series of texts show up. Game over and the level you were on before you
+ died as well as your final score. In another case, I made so when the time is up but you still have lives left, I reset the countdown timer as well as the 
+ position and velocity of the ball to the initial values. When the level goes up, in order to make the game harder, the bar width will decrease each level. Ball
+ and bar is painted on the window as well as the game level going up by one since the player has survived the 60 second countdown as well as 5 bonus points 
+ as a prize for lasting a round. In the actionPerformed method, the updateboth method is called as the program repaints after and this would happen every 20 milliseconds
+ since that's by the animation timer. 
+ 
+ Then we move on to the keylistener methods. There's nothing under keyTyped but I do use keyPressed where in a switch case statement, if the user presses the 
+ left arrow key, the bar velocity is set to -5 so it will go left and if right arrow key is pressed, the bar velocity changes to +5 so it'll go right. In the 
+ keyReleased method, this is another switch case statement where it'll account to when the player is still holding the other key while pressing a new key. 
+ If the right arrow key is pressed, and the left arrow key is also pressed after, the bar will move left. However if not, bar will move right. In another case, 
+ when the left arrow is pressed and the right arrow key is also pressed, the bar will move right. If not, it will move left. 
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
